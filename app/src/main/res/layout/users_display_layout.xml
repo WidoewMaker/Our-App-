@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="1.5dp"
+        android:background="@color/colorPrimary"
+
+
+
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:id="@+id/FiFdMainLin"
+        android:layout_margin="7dp"
+        >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:id="@+id/FiFrndsProImg"
+                android:src="@drawable/profilemiga"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+
+                ></de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UserName"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/Atwhite"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="14dp"
+                android:id="@+id/FiFrUsNmTxVw"
+                android:layout_weight="1
+"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/online"
+                android:id="@+id/FifrUserIsOnlineImg"
+                android:visibility="invisible"
+                ></ImageView>
+
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About User"
+                    android:textSize="14dp"
+                    android:textColor="@color/Mygray"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="14dp"
+                    android:id="@+id/FiFrUsStTxVw"
+                    >
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/AcRejBtnLinr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:visibility="gone">
+
+
+                <Button
+                    android:id="@+id/AcceptBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/green"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:text="Accept"
+                    >
+                </Button>
+
+                <Button
+                    android:id="@+id/RejectBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:text="Reject"
+
+
+                    >
+
+                </Button>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/FiFdMainLin"
+        android:background="@android:color/white"
+        ></LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

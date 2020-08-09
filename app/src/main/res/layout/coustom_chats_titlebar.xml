@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+
+    >
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/Chats_User_name_txVw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:layout_below="@+id/Chats_User_name_txVw"
+        android:id="@+id/Chats_LastSeen_txVw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Seen at 2.08 pm"
+        android:textSize="12dp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="4dp"
+
+        />
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chats_profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:cropToPadding="true"
+        android:src="@drawable/profilemiga" />
+
+
+
+
+    </RelativeLayout>

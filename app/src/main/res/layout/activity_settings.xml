@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:background="@color/colorPrimary"
+    >
+
+
+
+
+        <include
+            android:id="@+id/setting_titlie_bar"
+            layout="@layout/app_bar_layout"
+            ></include>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/setting_titlie_bar">
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:id="@+id/settingsrelative"
+        android:layout_below="@+id/settingslinelnr"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ScrollViewLNR"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/holdercircleimageLnr"
+            android:orientation="horizontal">
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/circleimageLnr"
+            android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/setprofile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_centerHorizontal="true"
+
+            app:civ_border_color="@android:color/black"
+            app:civ_border_width="2dp"
+            android:src="@drawable/profilemiga"
+            />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                >
+
+
+
+
+            <TextView
+                android:id="@+id/set_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp">
+
+            </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="posts"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        ></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:gravity="center_horizontal"
+
+                            ></TextView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Followers"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp"
+                        android:gravity="center_horizontal"
+                        ></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1.1k"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:gravity="center_horizontal"
+                            ></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Following"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp"
+                        android:gravity="center_horizontal"
+
+
+                        ></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="38"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:gravity="center_horizontal"
+                            ></TextView>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/holdercircleimageLnr"
+            android:orientation="vertical">
+
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/set_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hellow i'm New Here"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+
+
+
+                ></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/holdercircleimageLnr"
+                android:orientation="vertical"
+                android:background="@drawable/shadow_bg"
+                android:layout_marginTop="10dp"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:id="@+id/settingsbuttunLNR"
+            >
+
+
+
+        <Button
+                android:id="@+id/Done1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/buttons"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Edite Profile"
+            ></Button>
+
+
+
+
+
+            <Button
+            android:id="@+id/set_updatebut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Update"
+            android:background="@drawable/buttons"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
+            ></Button>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/SettingsListview"
+
+                    ></ListView>
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/shadow_bg"
+           android:id="@+id/settingslinelnr"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+

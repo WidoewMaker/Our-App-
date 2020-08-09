@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home_Fragment"
+    android:background="@color/colorPrimary"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <include
+        android:id="@+id/PostHome_titlie_bar"
+        layout="@layout/app_bar_layout"></include>
+
+
+        <LinearLayout
+            android:id="@+id/liner"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/PostHome_titlie_bar"
+            android:background="@android:color/black"
+            android:orientation="vertical"
+
+            ></LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/liner"
+            android:id="@+id/RecyView"
+
+            />
+    </RelativeLayout>
+
+
+
+
+
+
+
+</FrameLayout>

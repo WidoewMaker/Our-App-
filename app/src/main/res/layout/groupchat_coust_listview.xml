@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/Atblack">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+           >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GCname"
+            android:textSize="18dp"
+            android:textColor="@android:color/white"
+            android:id="@+id/GCname"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GCdate"
+            android:textSize="16dp"
+            android:textColor="@android:color/white"
+            android:id="@+id/GCdate"
+            android:layout_marginLeft="30dp"
+            ></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="01.5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@color/Mygray"
+            android:layout_marginTop="3dp"></LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GCmessage"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:id="@+id/GCmessage"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="6dp"></TextView>
+
+    </LinearLayout>
+
+
+    </LinearLayout>

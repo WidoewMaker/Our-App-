@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ChatActivity">
+
+    <include
+        android:id="@+id/Chats_titlie_bar"
+        layout="@layout/app_bar_layout"></include>
+
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/Chats_titlie_bar"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+
+        ></LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Chats_RecyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/liner"
+        android:layout_above="@+id/mylinerlayout"
+        android:background="@color/colorPrimary"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mylinerlayout"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp"
+        android:background="@drawable/buttons"
+        android:layout_marginBottom="25dp"
+        >
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Chat_Sticker_Button"
+            android:background="@drawable/left_curve"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/emoji"
+
+
+            ></ImageButton>
+
+
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Chats_Edtx"
+            android:inputType="textMultiLine"
+            android:hint="Type Text"
+            android:textSize="20dp"
+            android:background="@drawable/squer"
+            android:layout_weight="1"
+
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+
+
+
+            ></EditText>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Chat_File_Button"
+            android:background="@drawable/squer"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/file"
+
+            ></ImageButton>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Chat_sendButton"
+            android:src="@drawable/mic"
+            android:background="@drawable/right_curve"
+
+            ></ImageButton>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

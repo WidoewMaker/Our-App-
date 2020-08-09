@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".PostActivity">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar"
+        >
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width='wrap_content'
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/close"
+                        android:id="@+id/close"
+
+                        ></ImageView>
+
+                    <TextView
+                        android:layout_width='wrap_content'
+                        android:layout_height="wrap_content"
+                        android:text="Post"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/post"
+
+                        ></TextView>
+
+
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/image_added"
+            android:layout_weight="1"
+
+            ></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ComtEtLnr"
+            android:orientation="horizontal"
+            android:background="@drawable/buttons"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+
+
+            >
+
+
+
+
+
+
+
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/Dec_Etx"
+                android:inputType="textMultiLine"
+                android:hint="Type Discription"
+                android:textSize="20dp"
+                android:background="@drawable/ovel"
+                android:layout_weight="1"
+
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp"
+
+
+
+                ></EditText>
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
