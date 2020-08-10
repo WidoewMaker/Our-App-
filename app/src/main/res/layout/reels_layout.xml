@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+
+    >
+
+
+    <TextView
+        android:id="@+id/reels_ly_noOfComm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="106dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="78"
+        android:textColor="@color/Atwhite"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:weightSum="1" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="190dp"
+        android:src="@drawable/share" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_above="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/comments" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/like" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView_Profile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="336dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/personprofile"
+
+
+        />
+
+
+    <TextView
+        android:id="@+id/reels_ly_noOfLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="36dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="165"
+        android:textColor="@color/Atwhite"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:weightSum="1" />
+
+    <TextView
+        android:id="@+id/reels_ly_Descrition"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView_Profile"
+        android:layout_marginBottom="42dp"
+        android:layout_toStartOf="@+id/imageView"
+        android:text="Description"
+        android:textColor="@color/Atwhite"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:weightSum="1" />
+
+    <TextView
+        android:id="@+id/reels_ly_ProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView_Profile"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="-35dp"
+        android:layout_toStartOf="@+id/imageView"
+        android:text="Profile Name"
+        android:textColor="@color/Atwhite"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:weightSum="1" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:progressTint="@android:color/holo_green_dark"
+        />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="370dp"
+        android:layout_marginBottom="27dp"
+        android:src="@drawable/view" />
+
+    <TextView
+        android:id="@+id/reels_ly_noOfView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="350dp"
+        android:layout_marginBottom="27dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="165"
+        android:textColor="@color/Atwhite"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:weightSum="1" />
+
+
+</RelativeLayout>
