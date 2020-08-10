@@ -43,9 +43,7 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.example.myapplication.R.drawable;
 import static com.example.myapplication.R.id;
-import static com.example.myapplication.R.layout;
 
 public class SettingsActivity extends AppCompatActivity implements Dialg_username.DialoagUsernameLisner
 
