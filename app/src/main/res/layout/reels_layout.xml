@@ -7,6 +7,11 @@
     >
 
 
+    <ImageView
+        android:id="@+id/reels_postImgVw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/reels_ly_noOfComm"
         android:layout_width="wrap_content"
@@ -37,14 +42,14 @@
         android:id="@+id/imageView"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_above="@+id/imageView2"
+        android:layout_above="@+id/reelLikeImgVw"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/comments" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/reelLikeImgVw"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentEnd="true"
@@ -102,8 +107,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageView_Profile"
-        android:layout_marginEnd="154dp"
-        android:layout_marginBottom="-35dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="-39dp"
         android:layout_toStartOf="@+id/imageView"
         android:text="Profile Name"
         android:textColor="@color/Atwhite"
@@ -133,16 +138,18 @@
         android:id="@+id/reels_ly_noOfView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="350dp"
-        android:layout_marginBottom="27dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="165"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="28dp"
+        android:layout_toStartOf="@+id/imageView"
+        android:text="1.5M"
         android:textColor="@color/Atwhite"
         android:textSize="10dp"
         android:textStyle="bold"
+
         android:weightSum="1" />
 
 

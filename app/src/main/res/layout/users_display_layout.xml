@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:text="About User"
                     android:textSize="14dp"
-                    android:textColor="@color/Mygray"
+                    android:textColor="@color/Atwhite"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="14dp"
                     android:id="@+id/FiFrUsStTxVw"
