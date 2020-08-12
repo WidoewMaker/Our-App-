@@ -8,6 +8,8 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +49,9 @@ public class AddReels_Fragment extends Fragment {
     TextView CancelBoSh, GalaryBoSh;
     BottomSheetDialog bottomSheetDialog, postbottomSheetDialog;
     ImageView Video;
+    CheckBox PublicCkBx, PrivateCkBx;
+    TextView ReelsWsr_TxVw;
+    ImageButton PostBtn;
 
 
     @Nullable
@@ -92,6 +97,7 @@ public class AddReels_Fragment extends Fragment {
         CreateBottomSheetDialog();
         CreateReelsPostBottomSheetDialog();
 
+
         ReelsAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,8 +115,56 @@ public class AddReels_Fragment extends Fragment {
 
     private void CreateReelsPostBottomSheetDialog() {
         if (postbottomSheetDialog == null) {
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.reels_post_bottom_screen, null);
+            final View view = LayoutInflater.from(getContext()).inflate(R.layout.reels_post_bottom_screen, null);
             Video = view.findViewById(R.id.VideoShow);
+            PublicCkBx = view.findViewById(R.id.reelsPublic_checkBox);
+            PostBtn = view.findViewById(R.id.reelsPost_imgBtn);
+            PrivateCkBx = view.findViewById(R.id.reelsPrivate_checkBox);
+            ReelsWsr_TxVw = view.findViewById(R.id.reelsWarning_TxVw);
+            /*PostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                   
+                }
+            });*/
+
+            PublicCkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (PublicCkBx.isChecked())
+                    {
+                        ReelsWsr_TxVw.setVisibility(View.VISIBLE);
+                        PrivateCkBx.setChecked(false);
+                    } else {
+                        PrivateCkBx.setChecked(true);
+                        ReelsWsr_TxVw.setVisibility(View.GONE);
+                    }
+
+
+                }
+            });
+
+            PrivateCkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (PrivateCkBx.isChecked()) {
+                        PublicCkBx.setChecked(false);
+                        ReelsWsr_TxVw.setVisibility(View.GONE);
+
+                    }
+                    else {
+                        PublicCkBx.setChecked(true);
+                        ReelsWsr_TxVw.setVisibility(View.VISIBLE);
+                    }
+
+
+                }
+            });
+
+
+
+
             postbottomSheetDialog = new BottomSheetDialog(getContext());
             postbottomSheetDialog.setContentView(view);
         }
@@ -131,7 +185,7 @@ public class AddReels_Fragment extends Fragment {
                     Intent galleryIntent = new Intent();
                     galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                     galleryIntent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(galleryIntent,"Select"), GallleryPick);
+                    startActivityForResult(Intent.createChooser(galleryIntent, "Select"), GallleryPick);
 
 
                     bottomSheetDialog.dismiss();
@@ -143,6 +197,7 @@ public class AddReels_Fragment extends Fragment {
                 public void onClick(View v) {
                     bottomSheetDialog.dismiss();
 
+
                 }
             });
 
@@ -153,23 +208,19 @@ public class AddReels_Fragment extends Fragment {
 
     }
 
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
 
-
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GallleryPick && resultCode == RESULT_OK )
-        {
+        if (requestCode == GallleryPick && resultCode == RESULT_OK) {
             ImgUri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),ImgUri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), ImgUri);
                 Video.setImageBitmap(bitmap);
                 postbottomSheetDialog.show();
-            }
-            catch (IOException e)
-            {
+
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 

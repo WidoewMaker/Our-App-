@@ -11,16 +11,15 @@
         android:id="@+id/VideoShow"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/reelsPost_imgBtn"
         />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="88dp"
         android:layout_toEndOf="@+id/VideoShow"
         android:backgroundTint="@color/Atwhite"
         android:ems="10"
@@ -33,7 +32,7 @@
         android:textStyle="bold" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/reelsPrivate_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/VideoShow"
@@ -41,10 +40,11 @@
         android:text="Private"
         android:textColor="@color/Atwhite"
         android:textSize="15dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:checked="true"/>
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/reelsPublic_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/VideoShow"
@@ -58,14 +58,25 @@
         android:textStyle="bold" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/reelsPost_imgBtn"
         android:layout_width="48dp"
         android:layout_height="43dp"
         android:layout_alignParentEnd="true"
         android:background="@color/colorPrimary"
         android:src="@drawable/tick" />
 
-
+    <TextView
+        android:id="@+id/reelsWarning_TxVw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reelsPrivate_checkBox"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:text="Warning: This Post can be seen by Everyone better change it in Private"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="14dp"
+        android:visibility="gone"
+        />
 
 
 </RelativeLayout>
