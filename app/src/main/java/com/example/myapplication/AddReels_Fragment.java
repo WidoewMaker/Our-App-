@@ -110,6 +110,7 @@ public class AddReels_Fragment extends Fragment {
     private void CreateReelsPostBottomSheetDialog() {
         if (postbottomSheetDialog == null) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.reels_post_bottom_screen, null);
+            Video = view.findViewById(R.id.VideoShow);
             postbottomSheetDialog = new BottomSheetDialog(getContext());
             postbottomSheetDialog.setContentView(view);
         }
@@ -155,8 +156,8 @@ public class AddReels_Fragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.reels_post_bottom_screen, null);
-        Video = view.findViewById(R.id.VideoShow);
+
+
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GallleryPick && resultCode == RESULT_OK )
@@ -166,8 +167,9 @@ public class AddReels_Fragment extends Fragment {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),ImgUri);
                 Video.setImageBitmap(bitmap);
                 postbottomSheetDialog.show();
-
-            }  catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
 

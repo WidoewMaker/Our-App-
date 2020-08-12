@@ -61,10 +61,7 @@
         android:id="@+id/imageButton"
         android:layout_width="48dp"
         android:layout_height="43dp"
-
-
         android:layout_alignParentEnd="true"
-
         android:background="@color/colorPrimary"
         android:src="@drawable/tick" />
 
