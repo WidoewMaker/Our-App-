@@ -210,7 +210,6 @@ public class AddReels_Fragment extends Fragment {
         if (requestCode == GallleryPick && resultCode == RESULT_OK) {
             ImgUri = data.getData();
             postbottomSheetDialog.show();
-
             Picasso.get().load(ImgUri).into(Video);
 
         }
