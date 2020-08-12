@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,15 +44,16 @@ public class AddReels_Fragment extends Fragment {
     private static final int GallleryPick = 1;
     private String currentUserId;
     private FirebaseAuth mAuth;
-    private DatabaseReference Reelreef;
+    private DatabaseReference Reelref;
     private Uri ImgUri;
-    private StorageReference ReelsProStImg;
+    private StorageReference ReelsPostImg;
     TextView CancelBoSh, GalaryBoSh;
     BottomSheetDialog bottomSheetDialog, postbottomSheetDialog;
     ImageView Video;
     CheckBox PublicCkBx, PrivateCkBx;
     TextView ReelsWsr_TxVw;
     ImageButton PostBtn;
+    EditText ReelsDescriptionEdtx;
 
 
     @Nullable
@@ -62,8 +66,8 @@ public class AddReels_Fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add_reels_, container, false);
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
-        Reelreef = FirebaseDatabase.getInstance().getReference();
-        ReelsProStImg = FirebaseStorage.getInstance().getReference().child("Reels");
+        Reelref = FirebaseDatabase.getInstance().getReference("ReelsPosts");
+        ReelsPostImg = FirebaseStorage.getInstance().getReference("ReelsPosts");
 
         recyclerView = (RecyclerView) v.findViewById(R.id.reelsRecycler_View);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -77,15 +81,15 @@ public class AddReels_Fragment extends Fragment {
         snapHelper.attachToRecyclerView(recyclerView);
 
 
-        mediaObjectList.add(new MediaObject("", "", "", "", "", "", "", "", ""));
+        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", "", "", "", "", "", "", "", ""));
+        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", "", "", "", "", "", "", "", ""));
+        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", "", "", "", "", "", "", "", ""));
+        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", "", "", "", "", "", "", "", ""));
+        mediaObjectList.add(new MediaObject("", ""));
 
         demoAdapter = new DemoAdapter(mediaObjectList, getActivity().getApplicationContext());
         recyclerView.setAdapter(demoAdapter);
@@ -118,14 +122,17 @@ public class AddReels_Fragment extends Fragment {
             PublicCkBx = view.findViewById(R.id.reelsPublic_checkBox);
             PostBtn = view.findViewById(R.id.reelsPost_imgBtn);
             PrivateCkBx = view.findViewById(R.id.reelsPrivate_checkBox);
+            ReelsDescriptionEdtx = view.findViewById(R.id.reelsDescriptionEdTx);
             ReelsWsr_TxVw = view.findViewById(R.id.reelsWarning_TxVw);
-            /*PostBtn.setOnClickListener(new View.OnClickListener() {
+
+
+            PostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
-                   
+                public void onClick(View v) {
+                    //uploadReels();
+
                 }
-            });*/
+            });
 
             PublicCkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -165,8 +172,6 @@ public class AddReels_Fragment extends Fragment {
 
 
     }
-
-
     private void CreateBottomSheetDialog() {
         if (bottomSheetDialog == null) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.bottom_screen_ly, null);
@@ -192,6 +197,7 @@ public class AddReels_Fragment extends Fragment {
                     bottomSheetDialog.dismiss();
 
 
+
                 }
             });
 
@@ -201,6 +207,52 @@ public class AddReels_Fragment extends Fragment {
         }
 
     }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getActivity().getApplicationContext().getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+
+    }
+
+   /* private void uploadReels() {
+        if (ImgUri != null) {
+            StorageReference fileRef = ReelsPostImg.child(System.currentTimeMillis() + "." + getFileExtension(ImgUri));
+            fileRef.putFile(ImgUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            Toast.makeText(getContext(), "Yovvv Done", Toast.LENGTH_SHORT).show();
+                            MediaObject mediaObject = new MediaObject(ReelsDescriptionEdtx.getText().toString().trim(),
+                                    taskSnapshot.getDownloadUrl().toString());
+                            String uploadId = Reelref.push().getKey();
+                            Reelref.child(uploadId).setValue(mediaObject);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Toast.makeText(getContext(), "Uploading yea", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
+
+
+
 
 
     @Override

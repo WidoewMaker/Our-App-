@@ -15,7 +15,7 @@
         />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/reelsDescriptionEdTx"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
