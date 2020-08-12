@@ -1,10 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,8 +130,7 @@ public class AddReels_Fragment extends Fragment {
             PublicCkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (PublicCkBx.isChecked())
-                    {
+                    if (PublicCkBx.isChecked()) {
                         ReelsWsr_TxVw.setVisibility(View.VISIBLE);
                         PrivateCkBx.setChecked(false);
                     } else {
@@ -152,8 +149,7 @@ public class AddReels_Fragment extends Fragment {
                         PublicCkBx.setChecked(false);
                         ReelsWsr_TxVw.setVisibility(View.GONE);
 
-                    }
-                    else {
+                    } else {
                         PublicCkBx.setChecked(true);
                         ReelsWsr_TxVw.setVisibility(View.VISIBLE);
                     }
@@ -161,8 +157,6 @@ public class AddReels_Fragment extends Fragment {
 
                 }
             });
-
-
 
 
             postbottomSheetDialog = new BottomSheetDialog(getContext());
@@ -215,15 +209,9 @@ public class AddReels_Fragment extends Fragment {
 
         if (requestCode == GallleryPick && resultCode == RESULT_OK) {
             ImgUri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), ImgUri);
-                Video.setImageBitmap(bitmap);
-                postbottomSheetDialog.show();
+            postbottomSheetDialog.show();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            Picasso.get().load(ImgUri).into(Video);
 
         }
 
