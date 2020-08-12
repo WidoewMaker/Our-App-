@@ -72,8 +72,6 @@ public class ChatActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-
-
     private String saveCurrentTime, saveCurrentDate;
 
     private String checker = "", myUrl = "";
@@ -140,14 +138,6 @@ public class ChatActivity extends AppCompatActivity {
                 });
 
 
-
-
-
-
-
-
-
-
         SendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,11 +148,9 @@ public class ChatActivity extends AppCompatActivity {
 
         DisplayLastSeen();
 
-        SendFilesButton.setOnClickListener(new View.OnClickListener()
-        {
+        SendFilesButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
                 CharSequence option[] = new CharSequence[]
                         {
@@ -172,26 +160,22 @@ public class ChatActivity extends AppCompatActivity {
 
                         };
 
-                AlertDialog.Builder builder  = new AlertDialog.Builder(ChatActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
                 builder.setTitle("Select the File");
 
-                builder.setItems(option, new DialogInterface.OnClickListener()
-                {
+                builder.setItems(option, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        if (which == 0 )
-                            {
-                                checker = "image";
-                                Intent intent = new Intent();
-                                intent.setAction(Intent.ACTION_GET_CONTENT);
-                                intent.setType("image/*");
-                                startActivityForResult(intent.createChooser(intent, "Select Image"), 000);
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            checker = "image";
+                            Intent intent = new Intent();
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            intent.setType("image/*");
+                            startActivityForResult(intent.createChooser(intent, "Select Image"), 000);
 
 
-                            }
-                        if (which == 1 )
-                        {
+                        }
+                        if (which == 1) {
                             checker = "pdf";
                             Intent intent = new Intent();
                             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -200,8 +184,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
                         }
-                        if (which == 2 )
-                        {
+                        if (which == 2) {
                             checker = "docx";
                             Intent intent = new Intent();
                             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -209,9 +192,7 @@ public class ChatActivity extends AppCompatActivity {
                             startActivityForResult(intent.createChooser(intent, "Select Ms Word File"), 000);
 
 
-
                         }
-
 
 
                     }
@@ -220,9 +201,6 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }
@@ -257,8 +235,6 @@ public class ChatActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
 
-
-
         Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
@@ -269,13 +245,11 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable final Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable final Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 000 && resultCode == RESULT_OK && data != null && data.getData() != null)
-        {
+        if (requestCode == 000 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             progressDialog.setTitle("Sending Image");
             progressDialog.setMessage("Please wait....");
@@ -285,8 +259,7 @@ public class ChatActivity extends AppCompatActivity {
 
             fileUri = data.getData();
 
-            if (!checker.equals("image"))
-            {
+            if (!checker.equals("image")) {
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Documents File");
 
                 final String messageSenderRef = "Messages/" + messageSenderID + "/" + messageReceiverID;
@@ -299,20 +272,16 @@ public class ChatActivity extends AppCompatActivity {
 
                 final StorageReference filePath = storageReference.child(messagePushID + "." + checker);
 
-                filePath.putFile(fileUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>()
-                {
+                filePath.putFile(fileUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task)
-                    {
-                        if (task.isSuccessful())
-                        {
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if (task.isSuccessful()) {
                             Map messageTextBody = new HashMap();
                             messageTextBody.put("message", task.getResult().getDownloadUrl().toString());
                             messageTextBody.put("name", fileUri.getLastPathSegment());
 
 
                             messageTextBody.put("type", checker);
-
 
 
                             messageTextBody.put("from", messageSenderID);
@@ -333,18 +302,15 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e)
-                    {
+                    public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
 
                         Toast.makeText(ChatActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>()
-                {
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot)
-                    {
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                         double p = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                         progressDialog.setMessage((int) p + "% Uploading...");
 
@@ -352,12 +318,7 @@ public class ChatActivity extends AppCompatActivity {
                 });
 
 
-
-
-
-            }
-            else if (checker.equals("image"))
-            {
+            } else if (checker.equals("image")) {
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Image File");
 
                 final String messageSenderRef = "Messages/" + messageSenderID + "/" + messageReceiverID;
@@ -373,10 +334,8 @@ public class ChatActivity extends AppCompatActivity {
                 uploadTask = filePath.putFile(fileUri);
                 uploadTask.continueWithTask(new Continuation() {
                     @Override
-                    public Object then(@NonNull Task task) throws Exception
-                    {
-                        if (!task.isSuccessful())
-                        {
+                    public Object then(@NonNull Task task) throws Exception {
+                        if (!task.isSuccessful()) {
                             throw task.getException();
 
                         }
@@ -385,13 +344,10 @@ public class ChatActivity extends AppCompatActivity {
 
 
                     }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>()
-                {
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
-                    public void onComplete(@NonNull Task<Uri> task)
-                    {
-                        if (task.isSuccessful())
-                        {
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
                             Uri downloadUrl = task.getResult();
                             myUrl = downloadUrl.toString();
 
@@ -413,14 +369,12 @@ public class ChatActivity extends AppCompatActivity {
                             RootRef.updateChildren(messageBodyDetails).addOnCompleteListener(new OnCompleteListener() {
                                 @Override
                                 public void onComplete(@NonNull Task task) {
-                                    if (task.isSuccessful())
-                                    {
+                                    if (task.isSuccessful()) {
                                         progressDialog.dismiss();
 
                                         Toast.makeText(ChatActivity.this, "Message Sent Successfully...", Toast.LENGTH_SHORT).show();
-                                    } else
-                                        {
-                                            progressDialog.dismiss();
+                                    } else {
+                                        progressDialog.dismiss();
 
                                         Toast.makeText(ChatActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                     }
@@ -435,9 +389,7 @@ public class ChatActivity extends AppCompatActivity {
                 });
 
 
-            }
-            else 
-            {
+            } else {
                 progressDialog.dismiss();
                 Toast.makeText(this, "Nothing Selected", Toast.LENGTH_SHORT).show();
             }
@@ -457,8 +409,7 @@ public class ChatActivity extends AppCompatActivity {
 
                             if (state.equals("online")) {
                                 userLastSeen.setText("online");
-                            }
-                            else if (state.equals("offline")) {
+                            } else if (state.equals("offline")) {
                                 userLastSeen.setText("Last Seen: " + date + " " + time);
                             }
                         } else {
@@ -484,14 +435,10 @@ public class ChatActivity extends AppCompatActivity {
     private void SendMessage() {
         String messageText = MessageInputText.getText().toString();
 
-        if (TextUtils.isEmpty(messageText))
-        {
+        if (TextUtils.isEmpty(messageText)) {
 
             Toast.makeText(this, "first write your message...", Toast.LENGTH_SHORT).show();
-        } else
-            {
-
-
+        } else {
 
 
             String messageSenderRef = "Messages/" + messageSenderID + "/" + messageReceiverID;

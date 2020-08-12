@@ -165,11 +165,9 @@ public class SettingsActivity extends AppCompatActivity implements Dialg_usernam
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==GallleryPick  &&  resultCode==RESULT_OK  &&  data!=null)
-        {
+        if (requestCode == GallleryPick && resultCode == RESULT_OK && data != null) {
             Uri ImageUri = data.getData();
 
             CropImage.activity(ImageUri)
@@ -181,15 +179,13 @@ public class SettingsActivity extends AppCompatActivity implements Dialg_usernam
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode == RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 progressDialog.setTitle("Set Contacts Image");
                 progressDialog.setMessage("Please wait, your profile image is updating...");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
 
                 Uri resultUri = result.getUri();
-
 
                 StorageReference filePath = UsProStImg.child(currentUserId + ".jpg");
 

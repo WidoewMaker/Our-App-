@@ -29,7 +29,7 @@
         android:weightSum="1" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/reelsShare_ImgVw"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentEnd="true"
@@ -39,7 +39,7 @@
         android:src="@drawable/share" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/reelsComm_ImgVw"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_above="@+id/reelLikeImgVw"
@@ -60,7 +60,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView_Profile"
+        android:id="@+id/reelsPro_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
@@ -93,9 +93,9 @@
         android:id="@+id/reels_ly_Descrition"
         android:layout_width="292dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView_Profile"
+        android:layout_above="@+id/reelsPro_img"
         android:layout_marginBottom="42dp"
-        android:layout_toStartOf="@+id/imageView"
+        android:layout_toStartOf="@+id/reelsComm_ImgVw"
         android:text="Description"
         android:textColor="@color/Atwhite"
         android:textSize="13dp"
@@ -106,10 +106,10 @@
         android:id="@+id/reels_ly_ProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView_Profile"
+        android:layout_above="@+id/reelsPro_img"
         android:layout_marginEnd="168dp"
         android:layout_marginBottom="-39dp"
-        android:layout_toStartOf="@+id/imageView"
+        android:layout_toStartOf="@+id/reelsComm_ImgVw"
         android:text="Profile Name"
         android:textColor="@color/Atwhite"
         android:textSize="14dp"
@@ -125,7 +125,7 @@
         />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ViewsImgVw"
         android:layout_width="20dp"
         android:layout_height="15dp"
         android:layout_alignParentEnd="true"
@@ -144,7 +144,7 @@
         android:layout_marginStart="45dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="28dp"
-        android:layout_toStartOf="@+id/imageView"
+        android:layout_toStartOf="@+id/reelsComm_ImgVw"
         android:text="1.5M"
         android:textColor="@color/Atwhite"
         android:textSize="10dp"
