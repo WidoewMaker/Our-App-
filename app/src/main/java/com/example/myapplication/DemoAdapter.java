@@ -38,6 +38,7 @@ public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.ReelsViewHolde
 
             Reels_PostImgVw = itemView.findViewById(R.id.reels_postImgVw);
             description = itemView.findViewById(R.id.reels_ly_Descrition);
+            reelsPro_ImgVw= itemView.findViewById(R.id.reelsPro_img);
 
 
         }
@@ -59,6 +60,7 @@ public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.ReelsViewHolde
                 .fit()
                 .centerCrop()
                 .into(holder.Reels_PostImgVw);
+
 
 
     }

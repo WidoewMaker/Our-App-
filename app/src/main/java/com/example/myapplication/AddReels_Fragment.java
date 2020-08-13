@@ -55,7 +55,7 @@ public class AddReels_Fragment extends Fragment {
     private static final int GallleryPick = 1;
     private String currentUserId;
     private FirebaseAuth mAuth;
-    private DatabaseReference Reelref;
+    private DatabaseReference Reelref,Private_Reelref;
     private Uri ImgUri;
     private StorageReference ReelsPostImg;
     TextView CancelBoSh, GalaryBoSh;
@@ -82,11 +82,14 @@ public class AddReels_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_add_reels_, container, false);
+        CreateBottomSheetDialog();
+        CreateReelsPostBottomSheetDialog();
 
 
 
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
+        Private_Reelref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("ReelsPostPrivate");
         Reelref = FirebaseDatabase.getInstance().getReference().child("ReelsPosts");
         ReelsPostImg = FirebaseStorage.getInstance().getReference("ReelsPosts");
 
@@ -99,38 +102,37 @@ public class AddReels_Fragment extends Fragment {
         snapHelper.attachToRecyclerView(recyclerView);
 
 
-        Reelref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                {
-                    MediaObject UmediaObject = postSnapshot.getValue(MediaObject.class);
-                    mediaObjectList.add(UmediaObject);
+
+            Reelref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        MediaObject UmediaObject = postSnapshot.getValue(MediaObject.class);
+                        mediaObjectList.add(UmediaObject);
+
+
+                    }
+                    demoAdapter = new DemoAdapter(mediaObjectList, myActivity.getApplicationContext());
+                    recyclerView.setAdapter(demoAdapter);
 
 
                 }
-                demoAdapter = new DemoAdapter(mediaObjectList,myActivity.getApplicationContext());
-                recyclerView.setAdapter(demoAdapter);
-                demoAdapter.notifyDataSetChanged();
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(myActivity.getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
 
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(myActivity.getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
         ReelsAdd = (ImageButton) v.findViewById(R.id.reelsAdd_imgBut);
 
 
 
 
 
-        CreateBottomSheetDialog();
-        CreateReelsPostBottomSheetDialog();
+
 
         ReelsAdd.setOnClickListener(new View.OnClickListener() {
             @Override
