@@ -220,6 +220,7 @@ public class MainActivity extends AppCompatActivity
 
       super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.options_menu,menu);
+
         return true;
     }
 
@@ -269,6 +270,8 @@ public class MainActivity extends AppCompatActivity
 
 
          }
+
+
         if (item.getItemId() == R.id.settings_op)
         {
             SendUerToSettingsActivity();

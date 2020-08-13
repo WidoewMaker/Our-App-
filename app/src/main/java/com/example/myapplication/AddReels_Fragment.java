@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,20 +15,27 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,7 +62,14 @@ public class AddReels_Fragment extends Fragment {
     TextView ReelsWsr_TxVw;
     ImageButton PostBtn;
     EditText ReelsDescriptionEdtx;
+    private FragmentActivity myActivity;
 
+
+    @Override
+    public void onAttach(@NonNull Activity activity) {
+        this.myActivity = (FragmentActivity) activity;
+        super.onAttach(activity);
+    }
 
     @Nullable
 
@@ -129,7 +144,7 @@ public class AddReels_Fragment extends Fragment {
             PostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //uploadReels();
+                    uploadReels();
 
                 }
             });
@@ -209,13 +224,13 @@ public class AddReels_Fragment extends Fragment {
     }
 
     private String getFileExtension(Uri uri) {
-        ContentResolver cR = getActivity().getApplicationContext().getContentResolver();
+        ContentResolver cR = this.myActivity.getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
 
     }
 
-   /* private void uploadReels() {
+    private void uploadReels() {
         if (ImgUri != null) {
             StorageReference fileRef = ReelsPostImg.child(System.currentTimeMillis() + "." + getFileExtension(ImgUri));
             fileRef.putFile(ImgUri)
@@ -223,7 +238,7 @@ public class AddReels_Fragment extends Fragment {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            Toast.makeText(getContext(), "Yovvv Done", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(myActivity.getApplicationContext(), "Yovvv Done", Toast.LENGTH_SHORT).show();
                             MediaObject mediaObject = new MediaObject(ReelsDescriptionEdtx.getText().toString().trim(),
                                     taskSnapshot.getDownloadUrl().toString());
                             String uploadId = Reelref.push().getKey();
@@ -233,14 +248,14 @@ public class AddReels_Fragment extends Fragment {
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(myActivity.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Toast.makeText(getContext(), "Uploading yea", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(myActivity.getApplicationContext(), "Uploading yea", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -249,7 +264,7 @@ public class AddReels_Fragment extends Fragment {
             Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
         }
 
-    }*/
+    }
 
 
 
