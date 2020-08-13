@@ -14,40 +14,30 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class MainFragment extends Fragment
-{
-    private ViewPager myViewPager;
-    private TabLayout myTabLayout;
-    private TabsAccesorAdopter myTabsAccessorAdapter;
+public class MainFragment extends Fragment {
     FragmentActivity activityContext;
 
-
     @Override
-    public void onAttach(@NonNull Activity activity)
-    { activityContext = (FragmentActivity) activity;
-
+    public void onAttach(@NonNull Activity activity) {
+        activityContext = (FragmentActivity) activity;
         super.onAttach(activity);
     }
 
-    public MainFragment()
-    {
+    public MainFragment() {
 
     }
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
-        myViewPager = (ViewPager) v.findViewById(R.id.main_tabs_pager);
-        myTabsAccessorAdapter = new TabsAccesorAdopter(activityContext.getSupportFragmentManager());
+        ViewPager myViewPager = v.findViewById(R.id.main_tabs_pager);
+        TabsAccesorAdopter myTabsAccessorAdapter = new TabsAccesorAdopter(activityContext.getSupportFragmentManager());
         myViewPager.setAdapter(myTabsAccessorAdapter);
 
-
-        myTabLayout = (TabLayout) v.findViewById(R.id.main_tabs);
+        TabLayout myTabLayout = v.findViewById(R.id.main_tabs);
         myTabLayout.setupWithViewPager(myViewPager);
         return v;
 

@@ -18,20 +18,13 @@ public class TabsAccesorAdopter extends FragmentPagerAdapter {
 
         switch (i) {
             case 0:
-                Log.d("jagadesssh", "getItem: Chat");
                 return new Chats_Fragment();
 
             case 1:
-                Log.d("jagadesssh", "getItem: Group");
-
-                Groups_Fragment groups_fragment = new Groups_Fragment();
-                return groups_fragment;
+                return new Groups_Fragment();
 
             case 2:
-                Log.d("jagadesssh", "getItem: Contact");
-
-                Contacts_Fragment contacts_fragment = new Contacts_Fragment();
-                return contacts_fragment;
+                return new Contacts_Fragment();
 
 
         }
@@ -50,21 +43,16 @@ public class TabsAccesorAdopter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-
                 return "Chats";
 
             case 1:
-
-
                 return "Groups";
 
             case 2:
-
                 return "Stories";
 
 
             default:
-
                 return null;
 
 
