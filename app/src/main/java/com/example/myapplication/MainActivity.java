@@ -30,7 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+
+{
 
     private Toolbar toolbar;
 
@@ -38,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference Rootref;
     private String currentUserId;
     private Toolbar mToolbar;
-    BottomNavigationView bottomNavigationView;
+    BottomNavigationView bottomNavigationView ;
     Fragment selectedFragment = null;
+
+
 
 
     @Override
@@ -50,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         Rootref = FirebaseDatabase.getInstance().getReference();
 
 
-        toolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
+
+        toolbar =(Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("No Idea");
 
@@ -59,69 +64,76 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
 
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.Nav_home:
+        = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId())
+        {
+            case R.id.Nav_home:
 
-                    selectedFragment = new MainFragment();
-                    //Toast.makeText(MainActivity.this, "hame", Toast.LENGTH_SHORT).show();
+                selectedFragment = new MainFragment();
+                //Toast.makeText(MainActivity.this, "hame", Toast.LENGTH_SHORT).show();
 
-                    break;
-
-
-                case R.id.Nav_Add_post:
-
-                    selectedFragment = new AddPost_Fragment();
-                    // Toast.makeText(MainActivity.this, "Addpost", Toast.LENGTH_SHORT).show();
-
-                    break;
-
-                case R.id.Nav_Add_post1:
-
-                    selectedFragment = new AddReels_Fragment();
-                    //Toast.makeText(MainActivity.this, "Addpost1", Toast.LENGTH_SHORT).show();
+                break;
 
 
-                    break;
+            case R.id.Nav_Add_post:
+
+                selectedFragment = new AddPost_Fragment();
+               // Toast.makeText(MainActivity.this, "Addpost", Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.Nav_Add_post1:
+
+                selectedFragment = new AddReels_Fragment();
+                //Toast.makeText(MainActivity.this, "Addpost1", Toast.LENGTH_SHORT).show();
 
 
-                case R.id.Nav_Search:
 
-                    selectedFragment = new Search_Fragment();
-                    //Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                break;
+
+
+            case R.id.Nav_Search:
+
+                selectedFragment = new Search_Fragment();
+                //Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
 //
 
-                    break;
+                break;
 
-                case R.id.Nav_settings:
+            case R.id.Nav_settings:
 
-                    // selectedFragment = new AddPost_Fragment();
-                    //Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+               // selectedFragment = new AddPost_Fragment();
+                //Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
 //
 
 
-                    break;
+                break;
 
-            }
-
-            if (selectedFragment != null) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        selectedFragment).commit();
-
-            }
-
-
-            return true;
         }
-    };
+
+        if (selectedFragment != null)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
+
+        }
+
+
+        return true;
+    }
+};
 
     @Override
-    protected void onStart() {
+    protected void onStart()
+    {
+
 
 
         super.onStart();
@@ -130,11 +142,16 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentuser = mAuth.getCurrentUser();
 
 
-        if (currentuser == null) {
+        if (currentuser == null )
+
+        {
             SendUserToLoginActivity();
 
 
-        } else {
+
+
+        }
+        else {
 
             currentUserId = mAuth.getCurrentUser().getUid();
             selectedFragment = new MainFragment();
@@ -147,28 +164,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         FirebaseUser currentuser = mAuth.getCurrentUser();
 
 
-        if (currentuser != null) {
+        if (currentuser != null ) {
 
             UpdateUserStatus("offline");
         }
 
     }
 
-    private void VerifyUserExistance() {
+    private void VerifyUserExistance()
+    {
         String CurrentUserId = mAuth.getCurrentUser().getUid();
         Rootref.child("Users").child(CurrentUserId).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
 
-                if (!(dataSnapshot.child("name").exists())) {
+                if(!(dataSnapshot.child("name").exists()))
 
-                    sendUserToActivity(SettingsActivity.class);
+                {
+
+                   SendUerToSettingsActivity();
                 }
 
             }
@@ -180,116 +206,157 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.options_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu)
+
+    {
+        menu.add("Posts").setIcon(R.drawable.notification).setShowAsAction((MenuItem.SHOW_AS_ACTION_ALWAYS));
+
+      super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.options_menu,menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case R.id.main_notification:
-                Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.logout_op:
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
-                builder.setTitle("Are you Sure want to LogOut");
-                builder.setPositiveButton("LogOut", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        UpdateUserStatus("offline");
-
-                        mAuth.signOut();
-                        SendUserToLoginActivity();
-
-                    }
-                });
-
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-
-                    }
-                });
-                builder.show();
-                break;
-
-            case R.id.settings_op:
-                sendUserToActivity(SettingsActivity.class);
-                break;
-
-
-            case R.id.main_search_frnds_op:
-                sendUserToActivity(FindFirendsAcitvity.class);
-                break;
-
-
-            case R.id.main_createGroip_op:
-                //CreatingNewGroup();
+        switch (item.getTitle().toString()) {
+            case "Posts":
+                SendUerToPostActivity();
         }
 
+         if (item.getItemId() == R.id.logout_op)
+         {
+
+             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.AlertDialog);
+             builder.setTitle("Are you Sure want to LogOut");
+             builder.setPositiveButton("LogOut", new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface dialog, int which)
+                 {
+                     UpdateUserStatus("offline");
+
+                     mAuth.signOut();
+                     SendUserToLoginActivity();
+
+                 }
+             });
+
+
+             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface dialog, int which)
+                 {
+                     dialog.cancel();
+
+                 }
+             });
+             builder.show();
+
+
+
+
+
+
+
+
+         }
+        if (item.getItemId() == R.id.settings_op)
+        {
+            SendUerToSettingsActivity();
+
+
+
+
+        }
+
+        if (item.getItemId() == R.id.main_search_frnds_op)
+        {
+
+            SendUerToFindFriendsActivity();
+
+
+
+
+        }
+
+        if (item.getItemId() == R.id.main_createGroip_op)
+        {
+            CreatingNewGroup();
+
+
+        }
 
         return true;
     }
 
 
-//    private void CreatingNewGroup() {
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
-//        builder.setTitle("Type your Group Name");
-//        final EditText groupName = new EditText(MainActivity.this);
-//        groupName.setHint("      e.g  Friends Forever");
-//        builder.setView(groupName);
-//        builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//                String groupname = groupName.getText().toString();
-//                if (TextUtils.isEmpty(groupname)) {
-//                    Toast.makeText(MainActivity.this, "Group required", Toast.LENGTH_SHORT).show();
-//                    groupName.setError("Type a Name");
-//
-//                } else {
-//                    CreateNewGroup(groupname);
-//
-//                }
-//            }
-//        });
-//
-//
-//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//
-//
-//            }
-//        });
-//
-//        builder.show();
-//
-//
-//    }
+    private void CreatingNewGroup()
+    {
 
-    private void CreateNewGroup(final String groupname) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.AlertDialog);
+        builder.setTitle("Type your Group Name");
+        final EditText groupName = new  EditText(MainActivity.this);
+        groupName.setHint("      e.g  Friends Forever");
+        builder.setView(groupName);
+        builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+                String groupname = groupName.getText().toString();
+                if(TextUtils.isEmpty(groupname))
+                {
+                    Toast.makeText(MainActivity.this, "Group required", Toast.LENGTH_SHORT).show();
+                    groupName.setError("Type a Name");
+
+                }
+                else
+                {
+                    CreateNewGroup(groupname);
+
+                }
+            }
+        });
+
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
+
+
+            }
+        });
+
+        builder.show();
+
+
+
+
+
+    }
+
+    private void CreateNewGroup(final String groupname)
+    {
 
         Rootref.child("Groups").child(groupname).setValue("")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, groupname + "Created", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(MainActivity.this, groupname+"Created", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -305,13 +372,42 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void sendUserToActivity(Class<?> activity) {
-        Intent activityIntent = new Intent(this, activity);
-        startActivity(activityIntent);
+        private void SendUerToSettingsActivity()
+
+        {
+
+            Intent settingsIntent = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivity(settingsIntent);
+
+
+        }
+
+
+
+    private void SendUerToFindFriendsActivity()
+    {
+        Intent findFriendsIntent = new Intent(MainActivity.this, FindFirendsAcitvity.class);
+        startActivity(findFriendsIntent);
     }
 
-    private void UpdateUserStatus(String state) {
-        String SaveCurrentTime, SaveCurrentDate;
+    private void SendUerToReqsActivity()
+    {
+        Intent ReqIntent = new Intent(MainActivity.this, Req_Activity.class);
+        startActivity(ReqIntent);
+
+    }
+
+    private void SendUerToPostActivity()
+    {
+        Intent PostIntent = new Intent(MainActivity.this, Post_MainActivity.class);
+        startActivity(PostIntent);
+
+    }
+
+
+    private void  UpdateUserStatus(String state)
+    {
+        String SaveCurrentTime , SaveCurrentDate;
 
         Calendar calendar = Calendar.getInstance();
 
@@ -321,18 +417,26 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
         SaveCurrentTime = currentTime.format(calendar.getTime());
 
-        HashMap<String, Object> OnlineState = new HashMap<>();
+        HashMap<String,Object>  OnlineState = new HashMap<>();
 
-        OnlineState.put("time", SaveCurrentTime);
-        OnlineState.put("date", SaveCurrentDate);
-        OnlineState.put("state", state);
+        OnlineState.put("time",SaveCurrentTime);
+        OnlineState.put("date",SaveCurrentDate);
+        OnlineState.put("state",state);
+
+
+
 
 
         Rootref.child("Users").child(currentUserId).child("userState")
                 .updateChildren(OnlineState);
 
 
+
     }
+
+
+
+
 
 
 }
