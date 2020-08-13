@@ -30,8 +30,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -79,41 +82,55 @@ public class AddReels_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_add_reels_, container, false);
+
+
+
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
-        Reelref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("ReelsPosts");
+        Reelref = FirebaseDatabase.getInstance().getReference().child("ReelsPosts");
         ReelsPostImg = FirebaseStorage.getInstance().getReference("ReelsPosts");
 
-        recyclerView =  v.findViewById(R.id.reelsRecycler_View);
+        recyclerView = (RecyclerView) v.findViewById(R.id.reelsRecycler_View);
+        recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-
-        ReelsAdd = (ImageButton) v.findViewById(R.id.reelsAdd_imgBut);
-
-
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
 
 
-        mediaObjectList.add(new MediaObject("", ""));
+        Reelref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                {
+                    MediaObject UmediaObject = postSnapshot.getValue(MediaObject.class);
+                    mediaObjectList.add(UmediaObject);
 
-        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", ""));
+                }
+                demoAdapter = new DemoAdapter(mediaObjectList,myActivity.getApplicationContext());
+                recyclerView.setAdapter(demoAdapter);
+                demoAdapter.notifyDataSetChanged();
 
-        mediaObjectList.add(new MediaObject("", ""));
 
-        mediaObjectList.add(new MediaObject("", ""));
+            }
 
-        demoAdapter = new DemoAdapter(mediaObjectList, getActivity().getApplicationContext());
-        recyclerView.setAdapter(demoAdapter);
-        demoAdapter.notifyDataSetChanged();
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(myActivity.getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        ReelsAdd = (ImageButton) v.findViewById(R.id.reelsAdd_imgBut);
+
+
+
 
 
         CreateBottomSheetDialog();
         CreateReelsPostBottomSheetDialog();
-
 
         ReelsAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +204,7 @@ public class AddReels_Fragment extends Fragment {
 
 
     }
+
     private void CreateBottomSheetDialog() {
         if (bottomSheetDialog == null) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.bottom_screen_ly, null);
@@ -210,7 +228,6 @@ public class AddReels_Fragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     bottomSheetDialog.dismiss();
-
 
 
                 }
@@ -247,32 +264,26 @@ public class AddReels_Fragment extends Fragment {
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e)
-                {
+                public void onFailure(@NonNull Exception e) {
                     postbottomSheetDialog.dismiss();
                     Toast.makeText(myActivity.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot)
-                {
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                     postbottomSheetDialog.dismiss();
                     Toast.makeText(myActivity.getApplicationContext(), "Uploading yea", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
-        } else
-            {
-                postbottomSheetDialog.dismiss();
+        } else {
+            postbottomSheetDialog.show();
             Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
         }
 
     }
-
-
-
 
 
     @Override
