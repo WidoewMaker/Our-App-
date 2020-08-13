@@ -81,10 +81,10 @@ public class AddReels_Fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add_reels_, container, false);
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
-        Reelref = FirebaseDatabase.getInstance().getReference("ReelsPosts");
+        Reelref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("ReelsPosts");
         ReelsPostImg = FirebaseStorage.getInstance().getReference("ReelsPosts");
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.reelsRecycler_View);
+        recyclerView =  v.findViewById(R.id.reelsRecycler_View);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -247,20 +247,25 @@ public class AddReels_Fragment extends Fragment {
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e) {
+                public void onFailure(@NonNull Exception e)
+                {
+                    postbottomSheetDialog.dismiss();
                     Toast.makeText(myActivity.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot)
+                {
+                    postbottomSheetDialog.dismiss();
                     Toast.makeText(myActivity.getApplicationContext(), "Uploading yea", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
-        } else {
+        } else
+            {
+                postbottomSheetDialog.dismiss();
             Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
         }
 
