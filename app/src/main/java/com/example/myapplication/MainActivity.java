@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.Nav_home:
 
                 selectedFragment = new MainFragment();
-                //Toast.makeText(MainActivity.this, "hame", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -216,7 +216,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
 
     {
-        menu.add("Posts").setIcon(R.drawable.notification).setShowAsAction((MenuItem.SHOW_AS_ACTION_ALWAYS));
 
       super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.options_menu,menu);
@@ -291,6 +290,13 @@ public class MainActivity extends AppCompatActivity
         if (item.getItemId() == R.id.main_createGroip_op)
         {
             CreatingNewGroup();
+
+
+        }
+
+        if (item.getItemId() == R.id.main_notification)
+        {
+            SendUerToReqsActivity();
 
 
         }
