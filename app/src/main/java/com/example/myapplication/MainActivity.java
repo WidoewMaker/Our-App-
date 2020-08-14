@@ -1,13 +1,11 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,15 +25,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Toolbar toolbar;
 
     private FirebaseAuth mAuth;
     private DatabaseReference Rootref;
     private String currentUserId;
-    private Toolbar mToolbar;
+
     BottomNavigationView bottomNavigationView;
     Fragment selectedFragment = null;
 
@@ -48,12 +43,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         Rootref = FirebaseDatabase.getInstance().getReference();
-       
 
 
-        toolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
+        Toolbar toolbar =  findViewById(R.id.main_page_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("No Idea");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("No Idea");
 
 
         bottomNavigationView = findViewById(R.id.main_act_Bott_Nav);
@@ -162,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void VerifyUserExistance() {
-        String CurrentUserId = mAuth.getCurrentUser().getUid();
+        String CurrentUserId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         Rootref.child("Users").child(CurrentUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -197,7 +191,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.main_notification:
-                Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(this, Req_Activity.class));
+
+
+
                 break;
 
             case R.id.logout_op:
@@ -283,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //    }
 
-    private void CreateNewGroup(final String groupname) {
+   /* private void CreateNewGroup(final String groupname) {
 
         Rootref.child("Groups").child(groupname).setValue("")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -296,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-    }
+    }*/
 
     private void SendUserToLoginActivity() {
 
@@ -316,10 +314,10 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd MM,yyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat currentDate = new SimpleDateFormat("dd MM,yyy");
         SaveCurrentDate = currentDate.format(calendar.getTime());
 
-        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
         SaveCurrentTime = currentTime.format(calendar.getTime());
 
         HashMap<String, Object> OnlineState = new HashMap<>();
