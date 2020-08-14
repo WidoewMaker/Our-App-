@@ -19,18 +19,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 
-public class LoginActivity extends AppCompatActivity
-{
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class LoginActivity extends AppCompatActivity {
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
     private FirebaseAuth mAuth;
     private ProgressDialog loadingbar;
-    private Button LoginButton,PhoneLoginButton;
-    private EditText UserEmail,UserPassword;
-    private TextView NeedNewAcc,ForgPass;
-    private DatabaseReference UsrRef;
+    private Button LoginButton;
+    private EditText UserEmail, UserPassword;
+    private TextView NeedNewAcc;
 
 
     @Override
@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        UsrRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
         InitializeFields();
@@ -46,21 +45,11 @@ public class LoginActivity extends AppCompatActivity
 
         NeedNewAcc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-
-            {
-
-                SendUserToSignActivity();
-
-            }
-        });
-
-        PhoneLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-                SendUserToPhoneNumActivity();
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,75 +62,37 @@ public class LoginActivity extends AppCompatActivity
     }
 
 
-
-
-
-
-
-
-    private void AllowUserToLogin()
-    {
-
-
+    private void AllowUserToLogin() {
         String email = UserEmail.getText().toString();
         String password = UserPassword.getText().toString();
-        if (TextUtils.isEmpty(email))
-        {
-            Toast.makeText(this, "Please Enter email", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(password))
-        {
-            Toast.makeText(this, "Please Enter password", Toast.LENGTH_SHORT).show();
-        }
-        else {
+
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        if (TextUtils.isEmpty(email) || matcher.find()) {
+            Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+        } else {
             loadingbar.setTitle("Logging In");
-            loadingbar.setMessage("Pls wait...Dont Cancel this Action");
+            loadingbar.setMessage("Please wait till logging you in");
             loadingbar.setCanceledOnTouchOutside(false);
             loadingbar.show();
-            mAuth.signInWithEmailAndPassword(email,password)
+            mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
-                        {
-                            if (task.isSuccessful())
-                            {
-                                String CurrentUserId =mAuth.getCurrentUser().getUid();
-                                String deviceToken = FirebaseInstanceId.getInstance().getToken();
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                                UsrRef.child(CurrentUserId).child("device_token")
-                                        .setValue(deviceToken)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>()
-                                        {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task)
+                                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(mainIntent);
+                                finish();
 
-                                            {
-
-                                                if (task.isSuccessful())
-                                                {
-                                                    SendUserToMainActivity();
-                                                    Toast.makeText(LoginActivity.this, "LogIn Sucessfull", Toast.LENGTH_SHORT).show();
-
-                                                    loadingbar.dismiss();
-
-
-
-                                                }
-
-                                            }
-                                        });
-
-
-
-
-                                     }
-                            else {
-                                String message = task.getException().toString();
-                                Toast.makeText(LoginActivity.this, "Error:-"+message, Toast.LENGTH_SHORT).show();
-
-                                loadingbar.dismiss();
+                            } else {
+                                Log.w("", task.getException());
+                                Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                             }
-
+                            loadingbar.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -153,44 +104,16 @@ public class LoginActivity extends AppCompatActivity
     }
 
 
-    private void InitializeFields()
+    private void InitializeFields() {
 
-    {
-
-        LoginButton = (Button) findViewById(R.id.login_button);
-        PhoneLoginButton = (Button) findViewById(R.id.phone_login_button);
-        UserEmail =(EditText) findViewById(R.id.login_email);
-        UserPassword =(EditText) findViewById(R.id.login_pass);
-        NeedNewAcc = (TextView) findViewById(R.id.needNewAccoumt);
-       ForgPass = (TextView) findViewById(R.id.forg_pass);
+        LoginButton = findViewById(R.id.login_button);
+        UserEmail = findViewById(R.id.login_email);
+        UserPassword = findViewById(R.id.login_pass);
+        NeedNewAcc = findViewById(R.id.needNewAccoumt);
+        //TextView forgPass = findViewById(R.id.forg_pass);
         loadingbar = new ProgressDialog(this);
 
     }
 
-
-
-
-    private void SendUserToMainActivity()
-    {
-        Intent mainIntent = new Intent(LoginActivity.this,MainActivity.class);
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent);
-        finish();
-
-    }
-    private void SendUserToSignActivity()
-    {
-        Intent signIntent = new Intent(LoginActivity.this,RegisterActivity.class);
-        startActivity(signIntent);
-
-    }
-
-
-    private void SendUserToPhoneNumActivity()
-    {
-        Intent signPHIntent = new Intent(LoginActivity.this,PhoneNumLogActivity.class);
-        startActivity(signPHIntent);
-
-    }
 
 }

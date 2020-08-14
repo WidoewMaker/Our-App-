@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.util.Objects;
+
 public class RegisterActivity extends AppCompatActivity
 
 {
@@ -103,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity
                             {
                                 String device_token = FirebaseInstanceId.getInstance().getToken();
 
-                                String currentUserId = mAuth.getCurrentUser().getUid();
+                                String currentUserId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                                 RootRef.child("Users").child(currentUserId).setValue("");
                                 RootRef.child("Users").child(currentUserId).child("device_token")
                                         .setValue(device_token);
@@ -115,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity
                               loadingbar.dismiss();
                             }
                             else {
-                                String message = task.getException().toString();
+                                String message = Objects.requireNonNull(task.getException()).toString();
                                 Toast.makeText(RegisterActivity.this, "Error:-"+message, Toast.LENGTH_SHORT).show();
 
                                 loadingbar.dismiss();
