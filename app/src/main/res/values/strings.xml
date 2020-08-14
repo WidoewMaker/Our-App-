@@ -14,5 +14,6 @@
     <string name="email_placeholder">Mail ID</string>
     <string name="password_placeholder">Password</string>
     <string name="login_text">Login</string>
+    <string name="_78">78</string>
 
 </resources>

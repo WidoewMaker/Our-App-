@@ -22,11 +22,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="106dp"
-        android:layout_weight="1"
         android:gravity="center"
-        android:text="78"
+        android:text="@string/_78"
         android:textColor="@color/Atwhite"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:weightSum="1" />
 
