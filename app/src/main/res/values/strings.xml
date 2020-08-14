@@ -15,5 +15,10 @@
     <string name="password_placeholder">Password</string>
     <string name="login_text">Login</string>
     <string name="_78">78</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="description">Description</string>
+    <string name="_165">165</string>
+    <string name="_1_5m">1.5M</string>
+    <string name="todo">TODO</string>
 
 </resources>

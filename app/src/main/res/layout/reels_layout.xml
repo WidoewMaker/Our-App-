@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
+        android:contentDescription="@string/todo"
         />
 
     <TextView
@@ -37,7 +38,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="190dp"
-        android:src="@drawable/share" />
+        android:src="@drawable/share"
+        android:contentDescription="@string/todo"
+
+        />
 
     <ImageView
         android:id="@+id/reelsComm_ImgVw"
@@ -47,7 +51,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="30dp"
-        android:src="@drawable/comments" />
+        android:src="@drawable/comments"
+        android:contentDescription="@string/todo"
+
+        />
 
     <ImageView
         android:id="@+id/reelLikeImgVw"
@@ -57,7 +64,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="60dp"
-        android:src="@drawable/like" />
+        android:src="@drawable/like"
+        android:contentDescription="@string/todo"
+
+        />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -82,11 +92,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="36dp"
-        android:layout_weight="1"
         android:gravity="center"
-        android:text="165"
+        android:text="@string/_165"
         android:textColor="@color/Atwhite"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:weightSum="1" />
 
@@ -97,9 +106,9 @@
         android:layout_above="@+id/reelsPro_img"
         android:layout_marginBottom="42dp"
         android:layout_toStartOf="@+id/reelsComm_ImgVw"
-        android:text="Description"
+        android:text="@string/description"
         android:textColor="@color/Atwhite"
-        android:textSize="13dp"
+        android:textSize="13sp"
         android:textStyle="bold"
         android:weightSum="1" />
 
@@ -111,19 +120,13 @@
         android:layout_marginEnd="168dp"
         android:layout_marginBottom="-39dp"
         android:layout_toStartOf="@+id/reelsComm_ImgVw"
-        android:text="Profile Name"
+        android:text="@string/profile_name"
         android:textColor="@color/Atwhite"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:weightSum="1" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="7dp"
-        android:progressTint="@android:color/holo_green_dark"
-        />
+
 
     <ImageView
         android:id="@+id/ViewsImgVw"
@@ -133,7 +136,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="370dp"
         android:layout_marginBottom="27dp"
-        android:src="@drawable/view" />
+        android:src="@drawable/view"
+        android:contentDescription="@string/todo"
+
+        />
 
     <TextView
         android:id="@+id/reels_ly_noOfView"
@@ -146,12 +152,14 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="28dp"
         android:layout_toStartOf="@+id/reelsComm_ImgVw"
-        android:text="1.5M"
+        android:text="@string/_1_5m"
         android:textColor="@color/Atwhite"
-        android:textSize="10dp"
+        android:textSize="12sp"
         android:textStyle="bold"
 
-        android:weightSum="1" />
+        android:weightSum="1"
+
+        />
 
 
 </RelativeLayout>
