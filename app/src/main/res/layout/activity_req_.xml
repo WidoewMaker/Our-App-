@@ -8,15 +8,15 @@
 
 
     <include
-        android:id="@+id/req_titlie_bar"
+        android:id="@+id/ReqTitle_Bar"
         layout="@layout/app_bar_layout"
-        ></include>
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Req_Rcy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/req_titlie_bar"
+        android:layout_below="@+id/ReqTitle_Bar"
         android:background="@color/colorPrimary"        />
 
 </RelativeLayout>

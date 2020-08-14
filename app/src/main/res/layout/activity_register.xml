@@ -1,93 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
     android:background="@android:color/white"
-    android:padding="0dp">
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
 
-
-
-    <ImageView
-        android:id="@+id/sign_image"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="-10dp"
-        android:background="@android:color/white"
-        android:scaleType="fitCenter"
-        android:src="@drawable/imgs"></ImageView>
-
-    <EditText
-        android:id="@+id/sign_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_image"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:hint="Enter the Email"
-        android:inputType="textEmailAddress"
-        android:padding="8dp"
-        android:textStyle="bold"
-        ></EditText>
+        android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/sign_pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_email"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:hint="Enter the Password"
-        android:inputType="textPassword"
-        android:padding="8dp"
-        android:textStyle="bold"
-        ></EditText>
+        <ImageView
+            android:id="@+id/sign_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+
+            android:background="@android:color/white"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/imgs" />
+
+        <EditText
+            android:id="@+id/sign_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="no"
+            android:hint="@string/enter_the_email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/AlldreadyAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_button"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="23dp"
-        android:text="All Ready have an Account"
-        android:padding="8dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="textStart"
-        android:textSize="15dp"
-
-        ></TextView>
+        <EditText
+            android:id="@+id/sign_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/enter_the_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textStyle="bold" />
 
 
+        <TextView
+            android:id="@+id/AlldreadyAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="2dp"
+            android:padding="8dp"
+            android:text="@string/all_ready_have_an_account"
+            android:textAlignment="textStart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
 
 
     <Button
+        android:id="@+id/sign_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:id="@+id/sign_button"
-        android:layout_below="@+id/sign_pass"
-        android:padding="4dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Sign In"
-        android:textAllCaps="false"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttons"
-        ></Button>
+        android:padding="4dp"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
 
 </RelativeLayout>

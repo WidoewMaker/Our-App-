@@ -58,7 +58,7 @@ public class Req_Activity extends AppCompatActivity {
 
         myRequestsList = (RecyclerView) findViewById(R.id.Req_Rcy);
         myRequestsList.setLayoutManager(new LinearLayoutManager(this));
-        mToolbar = (Toolbar) findViewById(R.id.req_titlie_bar);
+        mToolbar = (Toolbar) findViewById(R.id.ReqTitle_Bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

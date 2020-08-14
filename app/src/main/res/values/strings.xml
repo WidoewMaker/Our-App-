@@ -19,6 +19,14 @@
     <string name="description">Description</string>
     <string name="_165">165</string>
     <string name="_1_5m">1.5M</string>
+
+    <string name="enter_the_email">Enter the Email</string>
+    <string name="enter_the_password">Enter the Password</string>
+    <string name="all_ready_have_an_account">All Ready have an Account</string>
+    <string name="sign_in">Sign In</string>
     <string name="todo">TODO</string>
+    <string name="forget_password">Forgot Password</string>
+    <string name="need_new_account">Need New Account</string>
+
 
 </resources>
