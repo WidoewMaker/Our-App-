@@ -27,7 +27,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private FirebaseAuth mAuth;
     private DatabaseReference Rootref;
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.Nav_home:
 
                     selectedFragment = new MainFragment();
-                    //Toast.makeText(MainActivity.this, "hame", Toast.LENGTH_SHORT).show();
 
                     break;
 
@@ -72,14 +72,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.Nav_Add_post:
 
                     selectedFragment = new AddPost_Fragment();
-                    // Toast.makeText(MainActivity.this, "Addpost", Toast.LENGTH_SHORT).show();
 
                     break;
 
                 case R.id.Nav_Add_post1:
 
                     selectedFragment = new AddReels_Fragment();
-                    //Toast.makeText(MainActivity.this, "Addpost1", Toast.LENGTH_SHORT).show();
 
 
                     break;
@@ -88,16 +86,13 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.Nav_Search:
 
                     selectedFragment = new Search_Fragment();
-                    //Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
-//
+
 
                     break;
 
                 case R.id.Nav_settings:
+                    
 
-                    // selectedFragment = new AddPost_Fragment();
-                    //Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
-//
 
 
                     break;
@@ -122,10 +117,10 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
 
-        FirebaseUser currentuser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
-        if (currentuser == null) {
+        if (currentUser == null) {
             SendUserToLoginActivity();
 
 
@@ -145,10 +140,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FirebaseUser currentuser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
-        if (currentuser != null) {
+        if (currentUser != null) {
 
             UpdateUserStatus("offline");
         }

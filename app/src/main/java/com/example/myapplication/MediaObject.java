@@ -1,20 +1,22 @@
 package com.example.myapplication;
 
 public class MediaObject {
-    private String vName, vImgUrL;
+    private String vName, vImgUrL, proImgUrl;
 
+    public MediaObject() {
 
+    }
 
-    MediaObject(String vName, String vImgUrL) {
+    public MediaObject(String vName, String vImgUrL) {
         if (vName.trim().equals("")) {
             vName = "No Description";
         }
         this.vName = vName;
         this.vImgUrL = vImgUrL;
-
+        this.proImgUrl = proImgUrl;
     }
 
-    String getvName() {
+    public String getvName() {
         return vName;
     }
 
@@ -22,7 +24,7 @@ public class MediaObject {
         this.vName = vName;
     }
 
-    String getvImgUrL() {
+    public String getvImgUrL() {
         return vImgUrL;
     }
 
@@ -30,8 +32,11 @@ public class MediaObject {
         this.vImgUrL = vImgUrL;
     }
 
-
+    public String getProImgUrl() {
+        return proImgUrl;
     }
 
-
-
+    public void setProImgUrl(String proImgUrl) {
+        this.proImgUrl = proImgUrl;
+    }
+}

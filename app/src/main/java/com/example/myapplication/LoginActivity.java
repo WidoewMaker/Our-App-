@@ -67,39 +67,43 @@ public class LoginActivity extends AppCompatActivity {
         String password = UserPassword.getText().toString();
 
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        if (TextUtils.isEmpty(email) || matcher.find()) {
+        if (!matcher.find()) {
             Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
         } else {
-            loadingbar.setTitle("Logging In");
-            loadingbar.setMessage("Please wait till logging you in");
-            loadingbar.setCanceledOnTouchOutside(false);
-            loadingbar.show();
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            } else {
+                loadingbar.setTitle("Logging In");
+                loadingbar.setMessage("Please wait till logging you in");
+                loadingbar.setCanceledOnTouchOutside(false);
+                loadingbar.show();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(mainIntent);
-                                finish();
+                                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(mainIntent);
+                                    finish();
 
-                            } else {
-                                Log.w("", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Log.w("", task.getException());
+                                    Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                                }
+                                loadingbar.dismiss();
                             }
-                            loadingbar.dismiss();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d("Login Activity", "onFailure() called with: e = [" + e + "]");
-                }
-            });
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Login Activity", "onFailure() called with: e = [" + e + "]");
+                    }
+                });
+            }
         }
     }
 
