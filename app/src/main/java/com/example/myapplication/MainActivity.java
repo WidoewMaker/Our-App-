@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         Rootref = FirebaseDatabase.getInstance().getReference();
+       
 
 
         toolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
