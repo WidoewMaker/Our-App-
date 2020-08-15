@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
 
         android:background="@color/colorPrimary"
         android:id="@+id/main"
@@ -28,15 +29,15 @@
         android:layout_margin="7dp"
         >
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:id="@+id/NsFdProImg"
-                android:src="@drawable/profilemiga"
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/NsFdProImg"
+            android:src="@drawable/profilemiga"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
 
-                ></de.hdodenhof.circleimageview.CircleImageView>
+            />
 
 
 
@@ -52,14 +53,14 @@
                 android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="UserName"
-                android:textSize="17dp"
+                android:text="@string/user_name"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textColor="@color/Atwhite"
                 android:layout_marginTop="18dp"
-                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
                 android:id="@+id/NsFdUsNmTxVw"
                 android:layout_weight="1"
 
@@ -79,11 +80,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About User"
-                    android:textSize="14dp"
+                    android:text="@string/about_user"
+                    android:textSize="14sp"
                     android:textColor="@color/Atwhite"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
                     android:id="@+id/NsfdUsStTxVw"
                     >
                 </TextView>
@@ -104,12 +105,12 @@
     </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/main"
-        ></LinearLayout>
+        android:layout_below="@+id/main" />
     <LinearLayout
         android:id="@+id/newsfeedlinr"
         android:layout_width="match_parent"
@@ -136,7 +137,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="1.5dp"
 
-        >
+        tools:ignore="ContentDescription">
 
     </ImageView>
         </RelativeLayout>
@@ -146,8 +147,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/NewsFeedImgVw"
-
 
 
         >
@@ -160,8 +159,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-
-
+            tools:ignore="UselessParent"
             >
 
             <ImageButton
@@ -170,21 +168,17 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/x"
                 android:background="@drawable/ovel"
-                ></ImageButton>
-
-
-
-
+                tools:ignore="ContentDescription" />
 
 
             <EditText
 
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/CmtEtx"
                 android:inputType="textMultiLine"
-                android:hint="Type Comment"
-                android:textSize="20dp"
+                android:hint="@string/type_comment"
+                android:textSize="20sp"
                 android:background="@drawable/left_curve"
                 android:layout_weight="1"
 
@@ -193,9 +187,7 @@
                 android:padding="5dp"
 
 
-
-                ></EditText>
-
+                tools:ignore="Autofill" />
 
 
             <ImageButton
@@ -205,7 +197,7 @@
                 android:src="@drawable/mic"
                 android:background="@drawable/right_curve"
 
-                ></ImageButton>
+                tools:ignore="ContentDescription" />
 
 
 
@@ -232,32 +224,29 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main"
             android:background="@color/colorPrimary"
             android:src="@drawable/like"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            >
+            tools:ignore="ContentDescription">
         </ImageView>
 
         <ImageView
             android:id="@+id/commentBut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main"
             android:background="@color/colorPrimary"
             android:layout_weight="1"
             android:src="@drawable/comments"
             android:layout_margin="5dp"
 
 
-            >
+            tools:ignore="ContentDescription">
         </ImageView>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main"
             android:background="@color/colorPrimary"
             android:layout_weight="1"
             android:src="@drawable/up"
@@ -265,7 +254,7 @@
             android:id="@+id/up"
 
 
-            >
+            tools:ignore="ContentDescription">
 
         </ImageView>
 
@@ -276,15 +265,13 @@
     </LinearLayout>
 
 
-
-
     <ImageView
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:src="@drawable/online"
         android:id="@+id/NsFdUserIsOnlineImg"
         android:visibility="gone"
-        ></ImageView>
+        tools:ignore="ContentDescription" />
 
 
 

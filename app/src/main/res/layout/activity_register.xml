@@ -19,9 +19,9 @@
             android:layout_height="250dp"
 
             android:background="@android:color/white"
-            android:contentDescription="@string/todo"
             android:scaleType="fitCenter"
-            android:src="@drawable/imgs" />
+            android:src="@drawable/imgs"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/sign_email"

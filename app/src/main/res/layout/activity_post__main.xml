@@ -28,7 +28,7 @@
         app:menu='@menu/button_navigation'
 
 
-        ></com.google.android.material.bottomnavigation.BottomNavigationView>
+       />
 
 
     </com.google.android.material.appbar.AppBarLayout>

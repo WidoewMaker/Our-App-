@@ -18,14 +18,14 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textColor="@color/Atwhite"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"
             android:background="@color/colorPrimary"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
 
 
             />
@@ -34,14 +34,14 @@
             android:id="@+id/BotGal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Galary"
+            android:text="@string/galary"
             android:textColor="@color/Atwhite"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"
             android:background="@color/colorPrimary"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
         />
 
 

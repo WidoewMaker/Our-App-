@@ -1,14 +1,13 @@
 package com.example.myapplication;
 
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -32,12 +33,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * A simple {@link Fragment} subclass.
  */
 public class Chats_Fragment extends Fragment {
-    private View PrivateChatsView;
     private RecyclerView chatsList;
 
     private DatabaseReference ChatsRef, UsersRef;
-    private FirebaseAuth mAuth;
-    private String currentUserID = "";
 
 
     public Chats_Fragment() {
@@ -49,20 +47,20 @@ public class Chats_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        PrivateChatsView = inflater.inflate(R.layout.fragment_chats_, container, false);
+        View privateChatsView = inflater.inflate(R.layout.fragment_chats_, container, false);
 
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUserID = mAuth.getCurrentUser().getUid();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         ChatsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserID);
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
-        chatsList = PrivateChatsView.findViewById(R.id.chats_users_list);
+        chatsList = privateChatsView.findViewById(R.id.chats_users_list);
         chatsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        return PrivateChatsView;
+        return privateChatsView;
     }
 
     @Override
@@ -83,24 +81,22 @@ public class Chats_Fragment extends Fragment {
                         final String[] retImage = {"default_image"};
 
                         UsersRef.child(usersIDs).addValueEventListener(new ValueEventListener() {
+                            @SuppressLint("SetTextI18n")
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()) {
                                     if (dataSnapshot.hasChild("image")) {
-                                        retImage[0] = dataSnapshot.child("image").getValue().toString();
+                                        retImage[0] = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
                                         Picasso.get().load(retImage[0]).into(holder.profileImage);
                                     }
 
-                                    final String retName = dataSnapshot.child("name").getValue().toString();
-                                    final String retStatus = dataSnapshot.child("status").getValue().toString();
+                                    final String retName = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
 
                                     holder.userName.setText(retName);
-
-
                                     if (dataSnapshot.child("userState").hasChild("state")) {
-                                        String state = dataSnapshot.child("userState").child("state").getValue().toString();
-                                        String date = dataSnapshot.child("userState").child("date").getValue().toString();
-                                        String time = dataSnapshot.child("userState").child("time").getValue().toString();
+                                        String state = Objects.requireNonNull(dataSnapshot.child("userState").child("state").getValue()).toString();
+                                        String date = Objects.requireNonNull(dataSnapshot.child("userState").child("date").getValue()).toString();
+                                        String time = Objects.requireNonNull(dataSnapshot.child("userState").child("time").getValue()).toString();
 
                                         if (state.equals("online")) {
                                             holder.userStatus.setText("online");

@@ -17,9 +17,9 @@
             android:id="@+id/login_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:contentDescription="@string/todo"
             android:scaleType="fitCenter"
-            android:src="@drawable/imag" />
+            android:src="@drawable/imag"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/main_Title"

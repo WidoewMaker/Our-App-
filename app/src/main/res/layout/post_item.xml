@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
 
         android:background="@color/colorPrimary"
         android:id="@+id/main"
@@ -36,7 +37,7 @@
                 android:padding="5dp"
                 android:layout_marginTop="5dp"
 
-                ></de.hdodenhof.circleimageview.CircleImageView>
+                />
 
 
 
@@ -46,31 +47,26 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="0dp"
+                    android:text="@string/user_name"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Atwhite"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="14dp"
+                    android:id="@+id/username"
+                    android:layout_weight="1"
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="username"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/Atwhite"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginLeft="14dp"
-                        android:id="@+id/username"
-                        android:layout_weight="1"
-
-                        >
-                    </TextView>
+                    >
+                </TextView>
 
 
 
 
 
-                </LinearLayout>
 
 
 
@@ -93,8 +89,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="14dp"
+            android:text="@string/description"
+            android:textSize="14sp"
             android:textColor="@color/Mygray"
             android:id="@+id/description"
             android:padding="8dp"
@@ -103,12 +99,12 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/main"
-        ></LinearLayout>
+        android:layout_below="@+id/main" />
     <LinearLayout
         android:id="@+id/newsfeedlinr"
         android:layout_width="match_parent"
@@ -134,7 +130,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="1.5dp"
 
-                >
+                tools:ignore="ContentDescription">
 
             </ImageView>
         </RelativeLayout>
@@ -144,8 +140,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/NewsFeedImgVw"
-
 
 
             >
@@ -160,7 +154,7 @@
                 android:visibility="gone"
 
 
-                >
+                tools:ignore="UselessParent">
 
                 <ImageButton
                     android:id="@+id/x"
@@ -168,21 +162,17 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/x"
                     android:background="@drawable/ovel"
-                    ></ImageButton>
-
-
-
-
+                    tools:ignore="ContentDescription" />
 
 
                 <EditText
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/CmtEtx"
                     android:inputType="textMultiLine"
-                    android:hint="Type Comment"
-                    android:textSize="20dp"
+                    android:hint="@string/type_comment"
+                    android:textSize="20sp"
                     android:background="@drawable/left_curve"
                     android:layout_weight="1"
 
@@ -191,9 +181,7 @@
                     android:padding="5dp"
 
 
-
-                    ></EditText>
-
+                    tools:ignore="Autofill" />
 
 
                 <ImageButton
@@ -203,7 +191,7 @@
                     android:src="@drawable/mic"
                     android:background="@drawable/right_curve"
 
-                    ></ImageButton>
+                    tools:ignore="ContentDescription" />
 
 
 
@@ -231,34 +219,30 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/main"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/like"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
                 android:id="@+id/likeImag"
-                >
+                tools:ignore="ContentDescription">
             </ImageView>
 
             <ImageView
                 android:id="@+id/commentimgt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/main"
                 android:background="@color/colorPrimary"
                 android:layout_weight="1"
                 android:src="@drawable/comments"
                 android:layout_margin="5dp"
 
 
-
-                >
+                tools:ignore="ContentDescription">
             </ImageView>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/main"
                 android:background="@color/colorPrimary"
                 android:layout_weight="1"
                 android:src="@drawable/up"
@@ -266,7 +250,7 @@
                 android:id="@+id/up"
 
 
-                >
+                tools:ignore="ContentDescription">
 
             </ImageView>
 
@@ -280,8 +264,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Liket"
-                android:textSize="14dp"
+                android:text="@string/like"
+                android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:id="@+id/Likestext"
@@ -296,8 +280,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comments"
-                android:textSize="14dp"
+                android:text="@string/comments"
+                android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:id="@+id/Commentstext"
@@ -313,8 +297,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Share"
-                android:textSize="14dp"
+                android:text="@string/share"
+                android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:id="@+id/Sharetext"

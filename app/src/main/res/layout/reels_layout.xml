@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -12,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:contentDescription="@string/todo"
-        />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/reels_ly_noOfComm"
@@ -39,9 +39,8 @@
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="190dp"
         android:src="@drawable/share"
-        android:contentDescription="@string/todo"
 
-        />
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/reelsComm_ImgVw"
@@ -52,9 +51,8 @@
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/comments"
-        android:contentDescription="@string/todo"
 
-        />
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/reelLikeImgVw"
@@ -65,9 +63,8 @@
         android:layout_marginEnd="49dp"
         android:layout_marginBottom="60dp"
         android:src="@drawable/like"
-        android:contentDescription="@string/todo"
 
-        />
+        tools:ignore="ContentDescription" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -137,9 +134,8 @@
         android:layout_marginEnd="370dp"
         android:layout_marginBottom="27dp"
         android:src="@drawable/view"
-        android:contentDescription="@string/todo"
 
-        />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/reels_ly_noOfView"

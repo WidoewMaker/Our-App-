@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhoneNumLogActivity">.
+    tools:context=".PhoneNumLogActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,21 +20,18 @@
         >
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/Opt_ed"
             android:inputType="textMultiLine"
-            android:hint="   Opt verification"
-            android:textSize="20dp"
+            android:hint="@string/opt_verification"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:background="@drawable/left_curve"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:padding="5dp"
             android:drawableStart="@drawable/otp"
-
-
-
-            ></EditText>
+            tools:ignore="Autofill"/>
 
         <ImageButton
             android:layout_width="50dp"
@@ -43,8 +39,7 @@
             android:id="@+id/Otp_sendButton"
             android:src="@drawable/send_message"
             android:background="@drawable/right_curve"
-
-            ></ImageButton>
+            tools:ignore="ContentDescription" />
 
 
 
@@ -68,22 +63,21 @@
         >
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/Phnum_Ed"
             android:inputType="textMultiLine"
-            android:hint=" Pone Number (91....)"
-            android:text="+91"
-            android:textSize="20dp"
+            android:hint="@string/pone_number_91"
+            android:text="@string/_91"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:background="@drawable/left_curve"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:padding="5dp"
             android:drawableStart="@drawable/ic_phone_android_black_24dp"
 
 
-
-            ></EditText>
+            tools:ignore="Autofill" />
 
         <ImageButton
             android:layout_width="50dp"
@@ -91,8 +85,7 @@
             android:id="@+id/Phnum_sendButton"
             android:src="@drawable/send_message"
             android:background="@drawable/right_curve"
-
-            ></ImageButton>
+            tools:ignore="ContentDescription" />
 
 
 

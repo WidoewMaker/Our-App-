@@ -8,13 +8,13 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
 
-
-    <include
-        android:id="@+id/PostHome_titlie_bar"
-        layout="@layout/app_bar_layout"></include>
+        <include
+            android:id="@+id/PostHome_titlie_bar"
+            layout="@layout/app_bar_layout" />
 
 
         <LinearLayout
@@ -25,7 +25,7 @@
             android:background="@android:color/black"
             android:orientation="vertical"
 
-            ></LinearLayout>
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

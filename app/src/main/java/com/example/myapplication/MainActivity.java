@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
 
                 case R.id.Nav_Search:
 
-                    selectedFragment = new Search_Fragment();
+                    selectedFragment = new Notification_Fragment();
 
 
                     break;
@@ -185,13 +185,7 @@ public class MainActivity extends AppCompatActivity
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
-            case R.id.main_notification:
 
-                    startActivity(new Intent(this, Req_Activity.class));
-
-
-
-                break;
 
             case R.id.logout_op:
 

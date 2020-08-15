@@ -10,7 +10,7 @@
     <include
         android:id="@+id/UserPro_titlie_bar"
         layout="@layout/app_bar_layout"
-        ></include>
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1sp"
@@ -18,7 +18,7 @@
         android:id="@+id/dp1lnr"
         android:orientation="horizontal"
         android:background="@android:color/black"
-        ></LinearLayout>
+        tools:ignore="SmallSp" />
 
 
 
@@ -28,7 +28,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_centerHorizontal="true"
 
         app:civ_border_color="@android:color/black"
@@ -45,9 +45,9 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:textColor="@android:color/white"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textStyle="bold"
-        android:textSize="19dp"
+        android:textSize="19sp"
         android:gravity="center_horizontal"
         android:layout_marginTop="24dp"
 
@@ -61,10 +61,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/ShowStNm"
         android:layout_below="@+id/ShowUsNm"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColor="@android:color/white"
-        android:text="User Status"
-        android:textSize="16dp"
+        android:text="@string/user_status"
+        android:textSize="16sp"
         android:layout_marginTop="9dp"
 
 
@@ -94,14 +94,14 @@
         android:background="@drawable/buttons"
         android:layout_marginTop="19dp"
         android:layout_weight="1"
-        android:text="Add Friend"
+        android:text="@string/add_friend"
         android:textStyle="bold"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:gravity="center_horizontal"
 
         android:textColor="@android:color/white"
         android:padding="9dp"
-        ></Button>
+        tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/FrndReqDclnBt"
@@ -111,17 +111,16 @@
             android:background="@drawable/buttons"
             android:layout_marginTop="19dp"
             android:layout_weight="1"
-            android:text="Decline Request"
+            android:text="@string/decline_request"
             android:textStyle="bold"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:padding="9dp"
             android:visibility="gone"
 
 
-
-            ></Button>
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 

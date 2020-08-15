@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
@@ -26,15 +27,15 @@
         android:layout_margin="7dp"
         >
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:id="@+id/FiFrndsProImg"
-                android:src="@drawable/profilemiga"
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/FiFrndsProImg"
+            android:src="@drawable/profilemiga"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
 
-                ></de.hdodenhof.circleimageview.CircleImageView>
+            />
 
 
 
@@ -47,30 +48,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="UserName"
-                android:textSize="17dp"
+                android:text="@string/user_name"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textColor="@color/Atwhite"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
                 android:id="@+id/FiFrUsNmTxVw"
                 android:layout_weight="1
 "
                 >
             </TextView>
 
-            <ImageView
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:src="@drawable/online"
-                android:id="@+id/FifrUserIsOnlineImg"
-                android:visibility="invisible"
-                ></ImageView>
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/online"
+                    android:id="@+id/FifrUserIsOnlineImg"
+                    android:visibility="invisible"
+                    tools:ignore="ContentDescription" />
 
 
             </LinearLayout>
@@ -86,11 +88,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About User"
-                    android:textSize="14dp"
+                    android:text="@string/about_user"
+                    android:textSize="14sp"
                     android:textColor="@color/Atwhite"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
                     android:id="@+id/FiFrUsStTxVw"
                     >
                 </TextView>
@@ -114,10 +116,9 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:text="Accept"
-                    >
-                </Button>
+                    android:textSize="18sp"
+                    android:text="@string/accept"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/RejectBtn"
@@ -126,13 +127,11 @@
                     android:background="@color/red"
                     android:layout_weight="1"
                     android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:text="Reject"
+                    android:textSize="18sp"
+                    android:text="@string/reject"
 
 
-                    >
-
-                </Button>
+                    tools:ignore="ButtonStyle" />
 
             </LinearLayout>
 
@@ -142,12 +141,11 @@
 
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/FiFdMainLin"
-        android:background="@android:color/white"
-        ></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white" />
     </LinearLayout>
 
 

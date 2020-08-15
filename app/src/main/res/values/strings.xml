@@ -16,17 +16,72 @@
     <string name="login_text">Login</string>
     <string name="_78">78</string>
     <string name="profile_name">Profile Name</string>
-    <string name="description">Description</string>
-    <string name="_165">165</string>
-    <string name="_1_5m">1.5M</string>
+
+
+
 
     <string name="enter_the_email">Enter the Email</string>
     <string name="enter_the_password">Enter the Password</string>
     <string name="all_ready_have_an_account">All Ready have an Account</string>
     <string name="sign_in">Sign In</string>
-    <string name="todo">TODO</string>
+
     <string name="forget_password">Forgot Password</string>
     <string name="need_new_account">Need New Account</string>
+    <string name="type_text">Type Text</string>
+    <string name="opt_verification">Opt verification</string>
+    <string name="pone_number_91">Pone Number (91....)</string>
+    <string name="_91">+91</string>
+    <string name="post">Post</string>
+    <string name="type_discription">Type Discription</string>
+
+    <string name="user_status">User Status</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="decline_request">Decline Request</string>
+    <string name="username">Username</string>
+    <string name="followers">Followers</string>
+    <string name="_1_1k">1.1k</string>
+    <string name="following">Following</string>
+    <string name="_38">38</string>
+    <string name="hellow_i_m_new_here">Hellow i\'m New Here</string>
+    <string name="edite_profile">Edite Profile</string>
+    <string name="update">Update</string>
+    <string name="posts">posts</string>
+    <string name="_100">100</string>
+    <string name="cancel">Cancel</string>
+    <string name="galary">Galary</string>
+    <string name="sname">Sname</string>
+    <string name="sdiscription">Sdiscription</string>
+    <string name="user_name">User Name</string>
+    <string name="last_seen_at_2_08_pm">Last Seen at 2.08 pm</string>
+    <string name="receiver_messages_here">receiver messages here</string>
+    <string name="sender_messages">sender messages</string>
+    <string name="name_5_to_20_letters">Name 5 to 20 Letters</string>
+    <string name="about_1_to_50_letters">About 1 to 50 Letters</string>
+    <string name="addpost">AddPost</string>
+    <string name="gcmessage">GCmessage</string>
+    <string name="gcdate">GCdate</string>
+    <string name="gcname">GCname</string>
+    <string name="type_comment">Type Comment</string>
+    <string name="like">Like</string>
+    <string name="comments">Comments</string>
+    <string name="share">Share</string>
+    <string name="_165">165</string>
+    <string name="description">Description</string>
+    <string name="_1_5m">1.5M</string>
+    <string name="type_description">Type Description</string>
+    <string name="_public">Public</string>
+    <string name="warning_this_post_can_be_seen_by_everyone_better_change_it_in_private">Warning: This Post can be seen by Everyone better change it in Private</string>
+    <string name="_private">Private</string>
+    <string name="about_user">About User</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="wants_to_connect_with_you">wants to connect with you.</string>
+    <string name="Req_Sent">Req Sent</string>
+    <string name="you_have_sent_a_request_to">\"you have sent a request to \"</string>
+    <string name="create_group">Create Group</string>
+    <string name="search_friends">Search Friends</string>
+    <string name="log_out">Log Out</string>
+    <string name="settings">Settings</string>
 
 
 </resources>

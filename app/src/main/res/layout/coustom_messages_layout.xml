@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -18,15 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginStart="3dp"
         android:layout_toEndOf="@+id/message_profile_image"
         android:background="@drawable/reciver_msgs_layout"
-        android:text="receiver messages here"
+        android:text="@string/receiver_messages_here"
         android:padding="10dp"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        />
+        tools:ignore="RelativeOverlap" />
 
 
     <ImageView
@@ -35,11 +36,11 @@
         android:layout_height="150dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="7dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         android:scaleType="centerCrop"
         android:layout_below="@+id/sender_messsage_text"
         android:background="@drawable/sender_msgs_layout"
-        />
+        tools:ignore="ContentDescription" />
 
 
 
@@ -50,11 +51,11 @@
         android:layout_height="150dp"
         android:layout_alignParentStart="true"
         android:layout_marginTop="7dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:scaleType="centerCrop"
         android:layout_below="@+id/message_profile_image"
         android:background="@drawable/reciver_msgs_layout"
-        />
+        tools:ignore="ContentDescription" />
 
 
 
@@ -66,12 +67,12 @@
         android:layout_marginTop="10dp"
         android:layout_alignParentTop="@+id/receiver_message_text"
         android:background="@drawable/sender_msgs_layout"
-        android:text="sender messages"
+        android:text="@string/sender_messages"
         android:textSize="14sp"
         android:padding="10dp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        />
+        tools:ignore="RelativeOverlap" />
 
 
 
