@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity
                     break;
 
                 case R.id.Nav_settings:
+                    selectedFragment = new SettingsFrgament();
                     
 
 

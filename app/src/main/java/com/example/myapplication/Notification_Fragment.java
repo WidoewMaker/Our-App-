@@ -213,7 +213,7 @@ public class Notification_Fragment extends Fragment {
                                                 final String requestUserName = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
 
                                                 holder.userName.setText(requestUserName);
-                                                holder.userStatus.setText(String.format("%s%s", getString(R.string.you_have_sent_a_request_to), requestUserName));
+                                                holder.userStatus.setText("you have sent a request to");
 
 
                                                 holder.RejectButton.setOnClickListener(new View.OnClickListener() {
